@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # Bot Token
-.bot-token.txt
+token.json
