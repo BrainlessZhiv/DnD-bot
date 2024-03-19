@@ -24,8 +24,9 @@
   },
   "homepage": "https://github.com/BrainlessZhiv/discord-bot#readme",
   "dependencies": {
-    "discord.js": "^14.14.1",
-    "dotenv": "^16.4.5"
+    "discord.js": "^14.12.1",
+    "dotenv": "^16.4.5",
+    "peggy": "^4.0.2"
   },
   "devDependencies": {
     "eslint": "^8.57.0"
