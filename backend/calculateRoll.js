@@ -18,6 +18,7 @@ function calculateDiceInternal(json) {
   if (json.type === "dice") {
     let result = 0;
     let diceResults = [];
+    let modResults = [];
 
     // Dice rollin
     for (let i = 0; i < json.count; i++) {
@@ -83,19 +84,23 @@ function calculateDiceInternal(json) {
       if (json.modifiers && json.modifiers.length > 0) {
         json.modifiers.forEach((modifier) => {
           if (modifier.value.type === "dice") {
-            modifier.value = calculateDiceInternal(modifier.value);
+            modifier.value = calculateDiceInternal(modifier.value).result;
           }
           switch (modifier.op) {
             case "+":
+              modResults.push(" + " + modifier.value);
               result += modifier.value;
               break;
             case "-":
+              modResults.push(" - " + modifier.value);
               result -= modifier.value;
               break;
             case "*":
+              modResults.push(" * " + modifier.value);
               result *= modifier.value;
               break;
             case "/":
+              modResults.push(" / " + modifier.value);
               result /= modifier.value;
               break;
             default:
@@ -104,8 +109,9 @@ function calculateDiceInternal(json) {
         });
       }
     }
+    console.log(...diceResults);
     console.log(result);
-    return result;
+    return { diceResults, modResults, result,};
   } else {
     return json.message;
   }
