@@ -64,7 +64,11 @@ module.exports = {
         result +
         "``" +
         (interaction.options.getInteger("target")
-          ? " Target: ``" + interaction.options.getInteger("target") + "`` Result: ``" + checkResult + "``"
+          ? " Target: ``" +
+            interaction.options.getInteger("target") +
+            "`` Result: ``" +
+            checkResult +
+            "``"
           : ""),
       ephemeral: false,
     });
