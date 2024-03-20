@@ -1,11 +1,17 @@
 const peggy = require("peggy");
 const fs = require("fs");
+const { Random, MersenneTwister19937 } = require("random-js");
 
 const grammar = fs.readFileSync("./parser/grammars/diceNotation.pegjs", "utf8");
 const parser = peggy.generate(grammar);
 
 function formulaToJSON(formula) {
-  return parser.parse(formula);
+  try {
+    return parser.parse(formula);
+  } catch (error) {
+    console.error(error);
+    return { type: "error", message: "Invalid formula" };
+  }
 }
 
 function calculateDiceInternal(json) {
@@ -15,7 +21,8 @@ function calculateDiceInternal(json) {
 
     // Dice rollin
     for (let i = 0; i < json.count; i++) {
-      let diceResult = Math.floor(Math.random() * (json.sides - 1)) + 1;
+      const random = new Random(MersenneTwister19937.autoSeed());
+      let diceResult = random.integer(1, json.sides);
       diceResults.push(diceResult);
     }
 
@@ -100,7 +107,7 @@ function calculateDiceInternal(json) {
     console.log(result);
     return result;
   } else {
-    return "Not a valid formula";
+    return json.message;
   }
 }
 

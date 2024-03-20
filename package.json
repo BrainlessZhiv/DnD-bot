@@ -26,7 +26,8 @@
   "dependencies": {
     "discord.js": "^14.12.1",
     "dotenv": "^16.4.5",
-    "peggy": "^4.0.2"
+    "peggy": "^4.0.2",
+    "random-js": "^2.1.0"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
