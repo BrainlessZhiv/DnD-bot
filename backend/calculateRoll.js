@@ -111,7 +111,7 @@ function calculateDiceInternal(json) {
     }
     console.log(...diceResults);
     console.log(result);
-    return { diceResults, modResults, result,};
+    return { diceResults, modResults, result };
   } else {
     return json.message;
   }
