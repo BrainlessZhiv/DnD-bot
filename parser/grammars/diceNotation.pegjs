@@ -1,5 +1,5 @@
 Dice
-  = count:Integer "d" sides:IntegerOrPercent options:Option? modifiers:Modifier* explosive:Explosive? " "? target:Integer? {
+  = count:Integer "d" sides:IntegerOrPercent options:Option? modifiers:Modifier* explosive:Explosive? {
       return {
         type: 'dice',
         count: count,
@@ -7,7 +7,6 @@ Dice
         modifiers: modifiers,
         options: options,
         explosive: explosive,
-        target: target
       };
     }
 
