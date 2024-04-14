@@ -5,7 +5,7 @@ This is a private Discord bot developed for our D&D group. It has several functi
 ## Features
 
 ### Dice Rolling
-The bot can roll dice with any number of sides, simulating the dice rolls used in D&D. Use the `/roll [number of sides]` command to roll a dice.
+The bot can roll dice with any number of sides, simulating the dice rolls used in D&D. Use the `/roll [dice notation formula]` command to roll a dice.
 
 ### Character Sheet Management
 The bot can store, retrieve, and manage character sheets for the players using `/character`. Use the `/character create` command to create a new character, the `/character get` command to retrieve a character's details, and the `/character delete` command to retrieve a character's details.
