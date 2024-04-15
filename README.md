@@ -20,5 +20,5 @@ Use the `/note get` command to retrieve a note's details, and the `/note remove`
 ### Random Encounter Generation
 The bot can generate random encounters based on the party's level and location. Use the `/encounter` command to generate and manage an encounter.
 
-### Loot Generation
-The bot can generate loot for encounters or treasure chests. Use the `/loot create` command to generate loot, `/loot get` to retrieve loot details, and `/loot delete` to remove loot.
+### Loot Generation and Item management
+The bot can generate loot for encounters or treasure chests. Use the `/loot create` command to generate loot, `/loot get` to retrieve loot details, `/loot delete` to remove loot, and `/loot update` to update a loot entry. Use `/loot generate` to generate random loot.
