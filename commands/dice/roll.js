@@ -26,7 +26,9 @@ module.exports = {
 				.setRequired(false),
 		),
 	async execute(interaction) {
-		const reply = await interaction.deferReply();
+		await interaction.deferReply();
+
+		let checkResult = '';
 
 		const calculation = calculateDice(interaction.options.getString('formula'), interaction.user.id);
 		let diceResults = calculation.diceResults;
@@ -56,21 +58,9 @@ module.exports = {
 		await interaction.editReply({
 			content:
         '``' +
-        interaction.options.getString('formula') +
-        '`` = ``' +
-        diceResults +
-        '' +
-        modResults +
-        ' = ' +
-        result +
-        '``' +
-        (interaction.options.getInteger('target')
-        	? ' Target: ``' +
-            interaction.options.getInteger('target') +
-            '`` Result: ``' +
-            checkResult +
-            '``'
-        	: ''),
+        interaction.options.getString('formula') + '`` = ``' + diceResults + '' + modResults + ' = ' + result + '``' +
+        (interaction.options.getInteger('target') ? ' Target: ``' + interaction.options.getInteger('target') +
+            '`` Result: ``' + checkResult + '``' : ''),
 			ephemeral: false,
 		});
 	},
