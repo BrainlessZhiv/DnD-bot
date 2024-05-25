@@ -20,7 +20,8 @@ for (const folder of commandFolders) {
         if ('data' in command) {
             commands.push(command.data.toJSON());
             console.log(`[INFO]: Command ${file} at ${foldersPath}/${folder} has been loaded.`);
-        } else {
+		}
+		else {
             console.error(`[WARNING]: Command ${file} at ${foldersPath}/${folder} is not a valid command file.`);
         }
     }
@@ -41,7 +42,8 @@ const rest = new REST().setToken(BOT_TOKEN);
 		);
 
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-	} catch (error) {
+	}
+	catch (error) {
 		// And of course, make sure you catch and log any errors!
 		console.error(error);
 	}
