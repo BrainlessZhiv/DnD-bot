@@ -7,7 +7,7 @@ require('dotenv').config();
 const BOT_TOKEN = process.env.BOT_TOKEN;
 
 // Deploy commands to Discord from deploy-commands.js
-require('./deploy-commands');
+// require('./deploy-commands');
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
