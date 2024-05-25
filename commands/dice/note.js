@@ -31,6 +31,7 @@ module.exports = {
 
 			const fields = {
 				title: new TextInputBuilder()
+				
 					.setCustomId('noteCreateTitle')
 					.setLabel('What is the title of the note?')
 					.setPlaceholder('Note')
@@ -39,6 +40,12 @@ module.exports = {
 					.setCustomId('noteCreateContent')
 					.setLabel('What is the content of the note?')
 					.setStyle(TextInputStyle.Paragraph),
+				link: new TextInputBuilder()
+					.setCustomId('noteCreateLink')
+					.setLabel('(Optional) Do you have an image to attach?')
+					.setPlaceholder('https://example.com')
+					.setStyle(TextInputStyle.Short)
+					.setRequired(false),
 			};
 
 
@@ -49,20 +56,22 @@ module.exports = {
 
 			const titleRow = new ActionRowBuilder().addComponents(fields.title);
 			const textRow = new ActionRowBuilder().addComponents(fields.content);
+			const linkRow = new ActionRowBuilder().addComponents(fields.link);
 
-			modal.addComponents(titleRow, textRow);
+			modal.addComponents(titleRow, textRow, linkRow);
 
 			await commandInteraction.showModal(modal);
 
 			let noteTitle;
 			let noteContent;
+			let noteLink;
 
 			commandInteraction.client.on(Events.InteractionCreate, (modalInteraction) => {
 				if (modalInteraction.isModalSubmit()) {
 					noteTitle = modalInteraction.fields.getTextInputValue('noteCreateTitle');
 					noteContent = modalInteraction.fields.getTextInputValue('noteCreateContent');
 
-					SubmitDataToNotes(noteTitle, noteContent);
+					SubmitDataToNotes(noteTitle, noteContent, noteLink);
 
 					modalInteraction.reply('Note "' + noteTitle + '" created successfully!');
 				}
