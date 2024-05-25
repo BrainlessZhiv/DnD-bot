@@ -31,7 +31,6 @@ module.exports = {
 
 			const fields = {
 				title: new TextInputBuilder()
-				
 					.setCustomId('noteCreateTitle')
 					.setLabel('What is the title of the note?')
 					.setPlaceholder('Note')
